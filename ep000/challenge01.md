@@ -167,5 +167,21 @@ is
 array(2) { [0]=> string(2) "d2" [1]=> string(2) "d3" }
 ```
 
-## Step 19
+## Step X
+We found that we can serialize objects that then deserialize to classes that already exist in the code. All we need is to have an object with the same class name as the existing remote class and set the properties to an exploitable value. It should likely be a class with [magic methods inside. In this case we found the `Stockfish` class that had a lot of potential.
+
+# Alternative 2 
+
+## Step 1 
+Win the chess game and the flag will reveal itself in the source. We did not manage :).
+```
+    echo $output->render($chess);
+    if ($chess->inCheckmate()) {
+        if ($chess->turn != "b") {
+            echo '<h1>You lost! Game Over!</h1>';
+        } else {
+            echo "<h1>ZOMG How did you defeat my AI :(. You definitely cheated. Here's your flag: ". getenv('REDIRECT_FLAG') . "</h1>";
+        }
+    }
+```
 
